@@ -35,6 +35,8 @@ public class Health : MonoBehaviour
 	// Protected Instance Variables
 	protected HealthBar healthbar = null;
 	protected float startHealth = 100f;
+
+    [SerializeField]
 	protected float currentHealth = 100f;
 
 	#endregion
@@ -63,13 +65,18 @@ public class Health : MonoBehaviour
 		healthbar.FullTex = fullTex;
 	}
 
-	#endregion
-	
-	
-	#region Public Functions
+    protected void Update()
+    {
+        HealthRegen();
+    }
 
-	//
-	public void Reset()
+    #endregion
+
+
+    #region Public Functions
+
+    //
+    public void Reset()
 	{
 		IsHurting = false;
 		IsDead = false;
@@ -93,6 +100,18 @@ public class Health : MonoBehaviour
 			IsDead = true;
 		}		
 	}
+
+    public void HealthRegen()
+    {
+        currentHealth += .05f;
+        healthbar.HealthStatus = currentHealth / MaximumHealth;
+
+        if (currentHealth > MaximumHealth)
+        {
+            currentHealth = MaximumHealth;
+            
+        }
+    }
 
 	#endregion
 }

@@ -27,7 +27,10 @@ public class Movement : MonoBehaviour
 	protected float hurtingForce = 2.0f;
 	protected Vector3 moveVector = Vector3.zero;
 	protected Vector3 startPosition = new Vector3(13.34303f, 11.51588f, 0f);
- 
+
+
+    [SerializeField]
+    float jumpCount = 0;
 
 	#endregion
 	
@@ -137,13 +140,19 @@ public class Movement : MonoBehaviour
 		}
 		
 		// Vertical movement...
-		if (Input.GetAxis("Vertical") > 0.0f || Input.GetButton("Jump"))
+		if (Input.GetButtonDown("Jump"))
 		{
-
+            if (jumpCount < 2)
+            {
+                verticalVelocity = jumpSpeed; //Test
+                jumpCount++;
+            }
+            
             if (charController.isGrounded)
 			{
                 IsJumping = true;
                 verticalVelocity = jumpSpeed;
+                jumpCount = 0;
 
 			}
 
