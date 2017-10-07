@@ -8,6 +8,8 @@ public class AirmanTrigger : MonoBehaviour
 	
 	// Protected Instance Variables
 	protected AirmanBoss airman;
+
+
 	protected Collider col;
 
 	#endregion
@@ -19,7 +21,9 @@ public class AirmanTrigger : MonoBehaviour
 	protected void Awake()
 	{
 		airman = FindObjectOfType<AirmanBoss>();
+        
 		Assert.IsNotNull(airman);
+
 
 		col = GetComponent<Collider>();
 		Assert.IsNotNull(col);
@@ -29,6 +33,8 @@ public class AirmanTrigger : MonoBehaviour
 	protected void Start()
 	{
 		airman.gameObject.SetActive(false);
+
+        
 	}
 
 	// Called when the Collider other enters the trigger.
@@ -36,6 +42,9 @@ public class AirmanTrigger : MonoBehaviour
 	{
 		airman.gameObject.SetActive(true);
 		airman.SetUpAirman();
+
+
+
 		col.enabled = false;
 	}
 

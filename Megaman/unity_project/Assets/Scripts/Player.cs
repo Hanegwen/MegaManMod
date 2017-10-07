@@ -329,7 +329,7 @@ public class Player : MonoBehaviour
 			{
 				playerTexObj.transform.localScale = new Vector3(0.1f, 1.0f, 0.1f);
 				standingTexIndex = (int) (Time.time / standingTexInterval);
-				playerTexRend.material = (standingTexIndex % 10 == 0) ? playerMaterials[1] : playerMaterials[0];
+				playerTexRend.material = (standingTexIndex % 2 == 0) ? playerMaterials[1] : playerMaterials[0]; //Should be 10
 			}
 		}
 		
