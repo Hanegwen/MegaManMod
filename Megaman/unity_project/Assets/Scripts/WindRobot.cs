@@ -49,7 +49,7 @@ public class WindRobot : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	protected void Update() 
+	protected void FixedUpdate() 
 	{
 		if (isDead == false)
 		{

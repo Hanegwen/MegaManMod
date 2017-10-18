@@ -16,7 +16,9 @@ public class AirmanWind : MonoBehaviour
 	protected bool beginSequence = true;
 	protected bool shouldBlowLeft = true;
 	protected float texChangeInterval = 0.1f;
-	protected float damage = 10.0f; 
+
+    [SerializeField]
+	protected float damage = 9.0f; 
 	protected Vector2 texScale = Vector2.zero;
 	protected Vector2 texScaleRight = new Vector2(1.0f, -1.0f);
 	protected Vector2 texScaleLeft = new Vector2(-1.0f, -1.0f);

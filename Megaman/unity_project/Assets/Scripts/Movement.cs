@@ -28,6 +28,8 @@ public class Movement : MonoBehaviour
 	protected Vector3 moveVector = Vector3.zero;
 	protected Vector3 startPosition = new Vector3(13.34303f, 11.51588f, 0f);
 
+    [SerializeField]
+    float dashSpeed;
 
     [SerializeField]
     float jumpCount = 0;
@@ -115,14 +117,27 @@ public class Movement : MonoBehaviour
 	}
 
 	//
+
 	protected void CheckMovement()
 	{
+
 		// Horizontal movement...
 		float deadZone = 0.01f;
 		verticalVelocity = moveVector.y;
 		moveVector = Vector3.zero;
-		
-		if (Input.GetAxis("Horizontal") > deadZone)
+
+        if (Input.GetButtonDown("Fire3")) //Dash
+        {
+            if (!IsTurningLeft)
+            {
+                this.gameObject.transform.position += new Vector3(dashSpeed, 0, 0);
+            }
+
+            else
+                this.gameObject.transform.position += new Vector3(-1 * dashSpeed, 0, 0);
+        }
+
+        if (Input.GetAxis("Horizontal") > deadZone)
 		{
 			IsWalking = true;
 			IsTurningLeft = false;
@@ -190,6 +205,7 @@ public class Movement : MonoBehaviour
 		else
 		{
 			CheckMovement();
+
 			ProcessMovement();
 		}
 	}

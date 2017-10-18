@@ -39,8 +39,9 @@ public class Health : MonoBehaviour
     [SerializeField]
 	protected float currentHealth = 100f;
 
-	#endregion
-
+    #endregion
+    [SerializeField]
+    float regenRate = .05f;
 
 	#region MonoBehaviour
 
@@ -65,9 +66,12 @@ public class Health : MonoBehaviour
 		healthbar.FullTex = fullTex;
 	}
 
-    protected void Update()
+    protected void FixedUpdate()
     {
-        HealthRegen();
+        if (this.gameObject.name == "Player")
+        {
+            HealthRegen();
+        }
     }
 
     #endregion
@@ -103,7 +107,7 @@ public class Health : MonoBehaviour
 
     public void HealthRegen()
     {
-        currentHealth += .05f;
+        currentHealth += regenRate;
         healthbar.HealthStatus = currentHealth / MaximumHealth;
 
         if (currentHealth > MaximumHealth)

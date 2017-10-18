@@ -45,7 +45,7 @@ public class SmallFlyingRobot : MonoBehaviour
 	}
 
 	// Update is called once per frame 
-	protected void Update()
+	protected void FixedUpdate()
 	{
 		if (shouldAttack == false)
 		{

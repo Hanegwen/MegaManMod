@@ -84,6 +84,7 @@ public class Player : MonoBehaviour
 		{
 			// Handle the horizontal and Vertical movements
 			movement.HandleMovement();
+  
 			
 			// Handle shooting
 			if((Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.LeftShift)) && shooting.CanShoot == true)

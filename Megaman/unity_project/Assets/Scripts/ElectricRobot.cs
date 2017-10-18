@@ -56,7 +56,7 @@ public class ElectricRobot : MonoBehaviour
 	}
 
 	// Update is called once per frame 
-	protected void Update() 
+	protected void FixedUpdate() 
 	{
 		// Stop fighting if the player is too far away
 		if ((GameEngine.Player.transform.transform.position - transform.position).magnitude >= distanceToStop)

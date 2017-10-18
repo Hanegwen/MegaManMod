@@ -40,7 +40,7 @@ public class ElectricShot : MonoBehaviour
 	}
 	
 	/* Update is called once per frame */
-	protected void Update ()
+	protected void FixedUpdate ()
 	{
 		GetComponent<Rigidbody>().velocity = targetDirection * speed * Time.deltaTime;
 		
